@@ -1,0 +1,9 @@
+C:\Users\hoganrichardson\Desktop\nxtBlueTooth\nxtBlueTooth\nxtBlueTooth\bin\Debug\nxtBlueTooth.exe
+C:\Users\hoganrichardson\Desktop\nxtBlueTooth\nxtBlueTooth\nxtBlueTooth\bin\Debug\nxtBlueTooth.pdb
+C:\Users\hoganrichardson\Desktop\nxtBlueTooth\nxtBlueTooth\nxtBlueTooth\obj\Debug\nxtBlueTooth.csprojAssemblyReference.cache
+C:\Users\hoganrichardson\Desktop\nxtBlueTooth\nxtBlueTooth\nxtBlueTooth\obj\Debug\nxtBlueTooth.Form1.resources
+C:\Users\hoganrichardson\Desktop\nxtBlueTooth\nxtBlueTooth\nxtBlueTooth\obj\Debug\nxtBlueTooth.Properties.Resources.resources
+C:\Users\hoganrichardson\Desktop\nxtBlueTooth\nxtBlueTooth\nxtBlueTooth\obj\Debug\nxtBlueTooth.csproj.GenerateResource.cache
+C:\Users\hoganrichardson\Desktop\nxtBlueTooth\nxtBlueTooth\nxtBlueTooth\obj\Debug\nxtBlueTooth.csproj.CoreCompileInputs.cache
+C:\Users\hoganrichardson\Desktop\nxtBlueTooth\nxtBlueTooth\nxtBlueTooth\obj\Debug\nxtBlueTooth.exe
+C:\Users\hoganrichardson\Desktop\nxtBlueTooth\nxtBlueTooth\nxtBlueTooth\obj\Debug\nxtBlueTooth.pdb
