@@ -7,126 +7,106 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO.Ports;
 
-namespace nxtBlueTooth
+namespace NXTremote
 {
     public partial class Form1 : Form
     {
-        private
-        SerialPort BluetoothConnection= new SerialPort();
+
+        private Bluetooth bt = null;
+        private Car car = null;
         public Form1()
         {
             InitializeComponent();
+            bt = new Bluetooth(this.textBoxLog);
         }
 
+        /*** EVENT HANDLERS ***/
         private void GetVersion_Click(object sender, EventArgs e)
         {
             byte[] NxtMessage = {0x01, 0x88 };
-            NXTSendCommandAndGetReply(NxtMessage);
+            bt.SendCommand(NxtMessage);
+           
         }
 
         private void GetInfo_Click(object sender, EventArgs e)
         {
             byte[] NxtMessage = {0x01, 0x9B };
-            NXTSendCommandAndGetReply(NxtMessage);
+            bt.SendCommand(NxtMessage);
         }
-
-        private void NXTSendCommandAndGetReply(byte[] Command)
-        {
-
-            Byte[] MessageLength= {0x00, 0x00};
-            
-            MessageLength[0]=(byte)Command.Length;
-            this.textBox2.Text += "TX:";
-            for (int i = 0; i < Command.Length; i++)
-                this.textBox2.Text += Command[i].ToString("X2") + " ";
-            this.textBox2.Text += Environment.NewLine;
-            this.textBox2.Select(this.textBox2.Text.Length, 0);
-            this.textBox2.ScrollToCaret();
-
-            BluetoothConnection.Write(MessageLength, 0, MessageLength.Length);
-            BluetoothConnection.Write(Command, 0, Command.Length);
-            int length = BluetoothConnection.ReadByte() + 256 * BluetoothConnection.ReadByte();
-            this.textBox2.Text += "RX:";
-            for(int i=0;i<length ;i++)
-                this.textBox2.Text+=BluetoothConnection.ReadByte().ToString("X2")+" ";
-            this.textBox2.Text += Environment.NewLine;
-            this.textBox2.Select(this.textBox2.Text.Length, 0);
-            this.textBox2.ScrollToCaret();
-            }
 
         private void buttonConnect_Click(object sender, EventArgs e)
         {
             this.buttonConnect.Enabled = false;
-            if (BluetoothConnection.IsOpen)
+            if (bt.BluetoothConnection.IsOpen)
             {
+                bt.Close();
+
+                // UI changes
                 this.buttonGetInfo.Enabled = false;
                 this.buttonGetVersion.Enabled = false;
                 this.groupBoxControls.Enabled = false;
                 this.groupBoxAux.Enabled = false;
-                BluetoothConnection.Close();
+                this.groupBoxSettings.Enabled = false;
                 this.buttonConnect.Text = "Connect";
             }
             else
             {
+                bt.Open(this.textBox1.Text.Trim(), 1500);
+
+                // UI changes
                 this.buttonConnect.Text = "Disconnect";
-                this.BluetoothConnection.PortName = this.textBox1.Text.Trim();
-                BluetoothConnection.Open();
-                BluetoothConnection.ReadTimeout = 1500;
                 this.buttonGetInfo.Enabled = true;
                 this.buttonGetVersion.Enabled = true;
-                this.groupBoxControls.Enabled = true;
-                this.groupBoxAux.Enabled = true;
-
+                this.groupBoxSettings.Enabled = true;
             }
             this.buttonConnect.Enabled = true;
-
         }
 
         /* Direction Buttons */
         private void buttonMoveUp_MouseDown(object sender, MouseEventArgs e)
         {
-
+            car.startDrive(trackBarSpeed.Value);
         }
 
         private void buttonMoveUp_MouseUp(object sender, MouseEventArgs e)
         {
-
+            car.stopDrive();
         }
 
         private void buttonMoveDown_MouseDown(object sender, MouseEventArgs e)
         {
-
+            car.startDrive(-trackBarSpeed.Value);
         }
 
         private void buttonMoveDown_MouseUp(object sender, MouseEventArgs e)
         {
-
+            car.stopDrive();
         }
 
         private void buttonTurnLeft_MouseDown(object sender, MouseEventArgs e)
         {
-
+            car.startTurn(Car.Turn.left);
         }
 
         private void buttonTurnLeft_MouseUp(object sender, MouseEventArgs e)
         {
-
+            car.stopTurn();
         }
 
         private void buttonTurnRight_MouseDown(object sender, MouseEventArgs e)
         {
-
+            car.startTurn(Car.Turn.right);
         }
 
         private void buttonTurnRight_MouseUp(object sender, MouseEventArgs e)
         {
-
+            car.stopTurn();
         }
 
         /* Speed Control */
         private void trackBarSpeed_ValueChanged(object sender, EventArgs e)
         {
-
+            car.speedAdjust(trackBarSpeed.Value);
         }
 
         /* Auxiliary Buttons */
@@ -140,5 +120,55 @@ namespace nxtBlueTooth
 
         }
 
+        /* Settings */
+        private void buttonSettings_Click(object sender, EventArgs e)
+        {
+            if ((radioButtonDriveA.Checked == true && radioButtonSteerA.Checked == true) ||
+                    (radioButtonDriveB.Checked == true && radioButtonSteerB.Checked == true) ||
+                    (radioButtonDriveC.Checked == true && radioButtonSteerC.Checked == true))
+            {
+                string message = "Cannot set same motor for drive and steer!";
+                string caption = "Motor Configuration Error";
+                MessageBox.Show(message, caption, MessageBoxButtons.OK);
+            }
+            else
+            {
+                Car.Motor driveMotor = 0;
+                Car.Motor steerMotor = 0;
+
+                if (radioButtonDriveA.Checked == true)
+                {
+                    driveMotor = Car.Motor.A;
+                }
+                else if (radioButtonDriveB.Checked == true)
+                {
+                    driveMotor = Car.Motor.B;
+                }
+                else if (radioButtonDriveC.Checked == true)
+                {
+                    driveMotor = Car.Motor.C;
+                }
+
+                if (radioButtonSteerA.Checked == true)
+                {
+                    steerMotor = Car.Motor.A;
+                }
+                else if (radioButtonSteerB.Checked == true)
+                {
+                    steerMotor = Car.Motor.B;
+                }
+                else if (radioButtonSteerC.Checked == true)
+                {
+                    steerMotor = Car.Motor.C;
+                }
+
+                // Initialise Car Instance
+                car = new Car(bt, driveMotor, steerMotor); // TODO add limit
+             
+                this.groupBoxControls.Enabled = true;
+                this.groupBoxAux.Enabled = true;
+                this.groupBoxSettings.Enabled = false;
+            }
+        }
     }
 }

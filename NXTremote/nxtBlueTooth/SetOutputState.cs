@@ -29,36 +29,42 @@ namespace NXTremote
 
         public byte CommandType { get; }
         public byte Command { get; }
+        private int _outputPort;
         public int OutputPort
         {
-            get => OutputPort;
+            get => _outputPort;
             set
             {
                 // Must be 0, 1 or 2 (or 0xFF - all)
                 if ((value >= 0) && (value <= 2))
                 {
-                    OutputPort = value;
+                    _outputPort = value;
                 }
                 else if (value == 0xFF)
                 {
-                    OutputPort = value;
+                    _outputPort = value;
                 }
             }
         }
+        private int _power;
         public int Power
         {
-            get => Power;
+            get => _power;
             set
             {
                 // Must be in range [-100, 100]
                 if ((value >= -100) && (value <= 100))
                 {
-                    Power = value;
+                    _power = value;
+                }
+                else
+                {
+                    throw new System.ArgumentOutOfRangeException("Power value out of range!");
                 }
             }
         }
-        public ModeType Mode { get; }
-        public RegulationType Regulation { get; }
+        public ModeType Mode { get; set; }
+        public RegulationType Regulation { get; set; }
         public int TurnRatio
         {
             get => TurnRatio;
@@ -71,7 +77,7 @@ namespace NXTremote
                 }
             }
         }
-        public RunStateType RunState { get; }
+        public RunStateType RunState { get; set; }
         public ulong TachoLimit { get; }
 
         public SetOutputState(int outputPort, int power, 

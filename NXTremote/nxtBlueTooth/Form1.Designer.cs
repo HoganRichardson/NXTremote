@@ -1,4 +1,4 @@
-﻿namespace nxtBlueTooth
+﻿namespace NXTremote
 {
     partial class Form1
     {
@@ -30,7 +30,7 @@
         {
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBoxLog = new System.Windows.Forms.TextBox();
             this.buttonGetInfo = new System.Windows.Forms.Button();
             this.buttonGetVersion = new System.Windows.Forms.Button();
             this.buttonConnect = new System.Windows.Forms.Button();
@@ -46,10 +46,23 @@
             this.buttonSiren = new System.Windows.Forms.Button();
             this.buttonHorn = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.groupBoxSettings = new System.Windows.Forms.GroupBox();
+            this.buttonSettings = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.radioButtonSteerC = new System.Windows.Forms.RadioButton();
+            this.radioButtonSteerB = new System.Windows.Forms.RadioButton();
+            this.radioButtonSteerA = new System.Windows.Forms.RadioButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioButtonDriveC = new System.Windows.Forms.RadioButton();
+            this.radioButtonDriveB = new System.Windows.Forms.RadioButton();
+            this.radioButtonDriveA = new System.Windows.Forms.RadioButton();
             this.groupBoxInit.SuspendLayout();
             this.groupBoxControls.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarSpeed)).BeginInit();
             this.groupBoxAux.SuspendLayout();
+            this.groupBoxSettings.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
@@ -69,18 +82,18 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Com Port";
             // 
-            // textBox2
+            // textBoxLog
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBoxLog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(392, 27);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox2.Size = new System.Drawing.Size(272, 463);
-            this.textBox2.TabIndex = 3;
+            this.textBoxLog.Location = new System.Drawing.Point(392, 27);
+            this.textBoxLog.Multiline = true;
+            this.textBoxLog.Name = "textBoxLog";
+            this.textBoxLog.ReadOnly = true;
+            this.textBoxLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxLog.Size = new System.Drawing.Size(272, 562);
+            this.textBoxLog.TabIndex = 3;
             // 
             // buttonGetInfo
             // 
@@ -137,7 +150,7 @@
             this.groupBoxControls.Controls.Add(this.buttonMoveDown);
             this.groupBoxControls.Controls.Add(this.buttonMoveUp);
             this.groupBoxControls.Enabled = false;
-            this.groupBoxControls.Location = new System.Drawing.Point(12, 101);
+            this.groupBoxControls.Location = new System.Drawing.Point(12, 200);
             this.groupBoxControls.Name = "groupBoxControls";
             this.groupBoxControls.Size = new System.Drawing.Size(374, 303);
             this.groupBoxControls.TabIndex = 13;
@@ -219,7 +232,7 @@
             this.groupBoxAux.Controls.Add(this.buttonSiren);
             this.groupBoxAux.Controls.Add(this.buttonHorn);
             this.groupBoxAux.Enabled = false;
-            this.groupBoxAux.Location = new System.Drawing.Point(12, 410);
+            this.groupBoxAux.Location = new System.Drawing.Point(12, 509);
             this.groupBoxAux.Name = "groupBoxAux";
             this.groupBoxAux.Size = new System.Drawing.Size(374, 80);
             this.groupBoxAux.TabIndex = 14;
@@ -255,24 +268,141 @@
             this.label3.TabIndex = 15;
             this.label3.Text = "Log";
             // 
+            // groupBoxSettings
+            // 
+            this.groupBoxSettings.Controls.Add(this.buttonSettings);
+            this.groupBoxSettings.Controls.Add(this.groupBox2);
+            this.groupBoxSettings.Controls.Add(this.groupBox1);
+            this.groupBoxSettings.Enabled = false;
+            this.groupBoxSettings.Location = new System.Drawing.Point(12, 101);
+            this.groupBoxSettings.Name = "groupBoxSettings";
+            this.groupBoxSettings.Size = new System.Drawing.Size(374, 93);
+            this.groupBoxSettings.TabIndex = 16;
+            this.groupBoxSettings.TabStop = false;
+            this.groupBoxSettings.Text = "Settings";
+            // 
+            // buttonSettings
+            // 
+            this.buttonSettings.Location = new System.Drawing.Point(281, 60);
+            this.buttonSettings.Name = "buttonSettings";
+            this.buttonSettings.Size = new System.Drawing.Size(87, 27);
+            this.buttonSettings.TabIndex = 2;
+            this.buttonSettings.Text = "Set";
+            this.buttonSettings.UseVisualStyleBackColor = true;
+            this.buttonSettings.Click += new System.EventHandler(this.buttonSettings_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.radioButtonSteerC);
+            this.groupBox2.Controls.Add(this.radioButtonSteerB);
+            this.groupBox2.Controls.Add(this.radioButtonSteerA);
+            this.groupBox2.Location = new System.Drawing.Point(145, 19);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(130, 68);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Steering Motor";
+            // 
+            // radioButtonSteerC
+            // 
+            this.radioButtonSteerC.AutoSize = true;
+            this.radioButtonSteerC.Location = new System.Drawing.Point(88, 28);
+            this.radioButtonSteerC.Name = "radioButtonSteerC";
+            this.radioButtonSteerC.Size = new System.Drawing.Size(32, 17);
+            this.radioButtonSteerC.TabIndex = 5;
+            this.radioButtonSteerC.Text = "C";
+            this.radioButtonSteerC.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonSteerB
+            // 
+            this.radioButtonSteerB.AutoSize = true;
+            this.radioButtonSteerB.Checked = true;
+            this.radioButtonSteerB.Location = new System.Drawing.Point(50, 28);
+            this.radioButtonSteerB.Name = "radioButtonSteerB";
+            this.radioButtonSteerB.Size = new System.Drawing.Size(32, 17);
+            this.radioButtonSteerB.TabIndex = 4;
+            this.radioButtonSteerB.TabStop = true;
+            this.radioButtonSteerB.Text = "B";
+            this.radioButtonSteerB.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonSteerA
+            // 
+            this.radioButtonSteerA.AutoSize = true;
+            this.radioButtonSteerA.Location = new System.Drawing.Point(7, 28);
+            this.radioButtonSteerA.Name = "radioButtonSteerA";
+            this.radioButtonSteerA.Size = new System.Drawing.Size(32, 17);
+            this.radioButtonSteerA.TabIndex = 3;
+            this.radioButtonSteerA.Text = "A";
+            this.radioButtonSteerA.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.radioButtonDriveC);
+            this.groupBox1.Controls.Add(this.radioButtonDriveB);
+            this.groupBox1.Controls.Add(this.radioButtonDriveA);
+            this.groupBox1.Location = new System.Drawing.Point(9, 19);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(130, 68);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Drive Motor";
+            // 
+            // radioButtonDriveC
+            // 
+            this.radioButtonDriveC.AutoSize = true;
+            this.radioButtonDriveC.Location = new System.Drawing.Point(87, 28);
+            this.radioButtonDriveC.Name = "radioButtonDriveC";
+            this.radioButtonDriveC.Size = new System.Drawing.Size(32, 17);
+            this.radioButtonDriveC.TabIndex = 2;
+            this.radioButtonDriveC.Text = "C";
+            this.radioButtonDriveC.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonDriveB
+            // 
+            this.radioButtonDriveB.AutoSize = true;
+            this.radioButtonDriveB.Location = new System.Drawing.Point(49, 28);
+            this.radioButtonDriveB.Name = "radioButtonDriveB";
+            this.radioButtonDriveB.Size = new System.Drawing.Size(32, 17);
+            this.radioButtonDriveB.TabIndex = 1;
+            this.radioButtonDriveB.Text = "B";
+            this.radioButtonDriveB.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonDriveA
+            // 
+            this.radioButtonDriveA.AutoSize = true;
+            this.radioButtonDriveA.Checked = true;
+            this.radioButtonDriveA.Location = new System.Drawing.Point(6, 28);
+            this.radioButtonDriveA.Name = "radioButtonDriveA";
+            this.radioButtonDriveA.Size = new System.Drawing.Size(32, 17);
+            this.radioButtonDriveA.TabIndex = 0;
+            this.radioButtonDriveA.TabStop = true;
+            this.radioButtonDriveA.Text = "A";
+            this.radioButtonDriveA.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(676, 502);
+            this.ClientSize = new System.Drawing.Size(676, 601);
+            this.Controls.Add(this.groupBoxSettings);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBoxAux);
             this.Controls.Add(this.groupBoxControls);
             this.Controls.Add(this.groupBoxInit);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBoxLog);
             this.Name = "Form1";
-            this.Text = "NXT Remote";
+            this.Text = "NXT Bluetooth";
             this.groupBoxInit.ResumeLayout(false);
             this.groupBoxInit.PerformLayout();
             this.groupBoxControls.ResumeLayout(false);
             this.groupBoxControls.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarSpeed)).EndInit();
             this.groupBoxAux.ResumeLayout(false);
+            this.groupBoxSettings.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -282,7 +412,7 @@
 
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBoxLog;
         private System.Windows.Forms.Button buttonGetInfo;
         private System.Windows.Forms.Button buttonGetVersion;
         private System.Windows.Forms.Button buttonConnect;
@@ -298,6 +428,16 @@
         private System.Windows.Forms.Button buttonSiren;
         private System.Windows.Forms.Button buttonHorn;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.GroupBox groupBoxSettings;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton radioButtonDriveB;
+        private System.Windows.Forms.RadioButton radioButtonDriveA;
+        private System.Windows.Forms.RadioButton radioButtonDriveC;
+        private System.Windows.Forms.RadioButton radioButtonSteerC;
+        private System.Windows.Forms.RadioButton radioButtonSteerB;
+        private System.Windows.Forms.RadioButton radioButtonSteerA;
+        private System.Windows.Forms.Button buttonSettings;
     }
 }
 

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace nxtBlueTooth
+namespace NXTremote
 {
     static class Program
     {
