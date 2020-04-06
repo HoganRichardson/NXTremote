@@ -23,7 +23,7 @@ namespace NXTremote
         public Motor DriveMotor { get; }
         public Motor SteerMotor { get; }
         public int SteerLimit { get; }
-        private int TURN_RATIO = 50; // Default, may need to modify TODO
+        private int TURN_RATIO = 100; // Default, may need to modify TODO
         private int STEER_SPEED = 50; // Default, may need to modify TODO
         private SetOutputState DriveOutput { get; }
         private SetOutputState SteerOutput { get; }
@@ -50,6 +50,7 @@ namespace NXTremote
             // Set DriveOutput to ramp up to `speed` and send command
             DriveOutput.Power = speed;
             DriveOutput.RunState = SetOutputState.RunStateType.RampUp;
+            DriveOutput.TachoLimit = 240;
 
             BT.SendCommand(DriveOutput.ToCommand());
         }
@@ -59,6 +60,7 @@ namespace NXTremote
             DriveOutput.Power = 0;
             DriveOutput.Mode = SetOutputState.ModeType.Brake;
             DriveOutput.RunState = SetOutputState.RunStateType.Running; // TODO check this?
+            DriveOutput.TachoLimit = 0;
             
             BT.SendCommand(DriveOutput.ToCommand());
         }

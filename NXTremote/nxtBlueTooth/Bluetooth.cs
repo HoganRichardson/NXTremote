@@ -27,11 +27,12 @@ namespace NXTremote
         {
             BluetoothConnection.Close();
         }
-        public void SendCommand(byte[] Command)
+        public byte[] SendCommand(byte[] Command)
         {
             Byte[] MessageLength = { 0x00, 0x00 };
             string log = "";
 
+            // Send Message
             MessageLength[0] = (byte)Command.Length;
             log += "TX: ";
             for (int i = 0; i < Command.Length; i++)
@@ -41,13 +42,19 @@ namespace NXTremote
             BluetoothConnection.Write(MessageLength, 0, MessageLength.Length);
             BluetoothConnection.Write(Command, 0, Command.Length);
 
+            // Get Response
+            List<byte> response = new List<byte>();
             int length = BluetoothConnection.ReadByte() + 256 * BluetoothConnection.ReadByte();
             log += "RX:";
             for (int i = 0; i < length; i++)
-                log += BluetoothConnection.ReadByte().ToString("X2") + " ";
+            {
+                response.Add((byte)BluetoothConnection.ReadByte());
+                log += response.Last().ToString("X2") + " ";
+            }
             log += Environment.NewLine;
 
             logWrite(log);
+            return response.ToArray();
         }
 
         private void logWrite (string logText)

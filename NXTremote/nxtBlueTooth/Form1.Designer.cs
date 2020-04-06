@@ -56,6 +56,14 @@
             this.radioButtonDriveC = new System.Windows.Forms.RadioButton();
             this.radioButtonDriveB = new System.Windows.Forms.RadioButton();
             this.radioButtonDriveA = new System.Windows.Forms.RadioButton();
+            this.groupBoxDebug = new System.Windows.Forms.GroupBox();
+            this.textBoxDebug = new System.Windows.Forms.TextBox();
+            this.buttonSendDebugCommand = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.buttonDebugParse = new System.Windows.Forms.Button();
+            this.textBoxDebugResponse = new System.Windows.Forms.TextBox();
+            this.buttonDebugGetState = new System.Windows.Forms.Button();
             this.groupBoxInit.SuspendLayout();
             this.groupBoxControls.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarSpeed)).BeginInit();
@@ -63,11 +71,12 @@
             this.groupBoxSettings.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBoxDebug.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(62, 21);
+            this.textBox1.Location = new System.Drawing.Point(65, 19);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(49, 20);
             this.textBox1.TabIndex = 0;
@@ -76,31 +85,32 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 25);
+            this.label1.Location = new System.Drawing.Point(6, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 13);
+            this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Com Port";
+            this.label1.Text = "COM Port";
             // 
             // textBoxLog
             // 
             this.textBoxLog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxLog.Location = new System.Drawing.Point(392, 27);
+            this.textBoxLog.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxLog.Location = new System.Drawing.Point(392, 235);
             this.textBoxLog.Multiline = true;
             this.textBoxLog.Name = "textBoxLog";
             this.textBoxLog.ReadOnly = true;
             this.textBoxLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxLog.Size = new System.Drawing.Size(272, 562);
+            this.textBoxLog.Size = new System.Drawing.Size(272, 354);
             this.textBoxLog.TabIndex = 3;
             // 
             // buttonGetInfo
             // 
             this.buttonGetInfo.Enabled = false;
-            this.buttonGetInfo.Location = new System.Drawing.Point(113, 47);
+            this.buttonGetInfo.Location = new System.Drawing.Point(270, 47);
             this.buttonGetInfo.Name = "buttonGetInfo";
-            this.buttonGetInfo.Size = new System.Drawing.Size(91, 25);
+            this.buttonGetInfo.Size = new System.Drawing.Size(98, 25);
             this.buttonGetInfo.TabIndex = 1;
             this.buttonGetInfo.Text = "Get NXT Info";
             this.buttonGetInfo.UseVisualStyleBackColor = true;
@@ -109,7 +119,7 @@
             // buttonGetVersion
             // 
             this.buttonGetVersion.Enabled = false;
-            this.buttonGetVersion.Location = new System.Drawing.Point(9, 47);
+            this.buttonGetVersion.Location = new System.Drawing.Point(270, 12);
             this.buttonGetVersion.Name = "buttonGetVersion";
             this.buttonGetVersion.Size = new System.Drawing.Size(98, 25);
             this.buttonGetVersion.TabIndex = 1;
@@ -119,9 +129,9 @@
             // 
             // buttonConnect
             // 
-            this.buttonConnect.Location = new System.Drawing.Point(117, 18);
+            this.buttonConnect.Location = new System.Drawing.Point(120, 16);
             this.buttonConnect.Name = "buttonConnect";
-            this.buttonConnect.Size = new System.Drawing.Size(67, 25);
+            this.buttonConnect.Size = new System.Drawing.Size(87, 25);
             this.buttonConnect.TabIndex = 6;
             this.buttonConnect.Text = "Connect";
             this.buttonConnect.UseVisualStyleBackColor = true;
@@ -262,7 +272,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(393, 11);
+            this.label3.Location = new System.Drawing.Point(395, 219);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(25, 13);
             this.label3.TabIndex = 15;
@@ -379,11 +389,90 @@
             this.radioButtonDriveA.Text = "A";
             this.radioButtonDriveA.UseVisualStyleBackColor = true;
             // 
+            // groupBoxDebug
+            // 
+            this.groupBoxDebug.Controls.Add(this.buttonDebugGetState);
+            this.groupBoxDebug.Controls.Add(this.label5);
+            this.groupBoxDebug.Controls.Add(this.buttonDebugParse);
+            this.groupBoxDebug.Controls.Add(this.textBoxDebugResponse);
+            this.groupBoxDebug.Controls.Add(this.label4);
+            this.groupBoxDebug.Controls.Add(this.buttonSendDebugCommand);
+            this.groupBoxDebug.Controls.Add(this.textBoxDebug);
+            this.groupBoxDebug.Location = new System.Drawing.Point(392, 12);
+            this.groupBoxDebug.Name = "groupBoxDebug";
+            this.groupBoxDebug.Size = new System.Drawing.Size(272, 200);
+            this.groupBoxDebug.TabIndex = 17;
+            this.groupBoxDebug.TabStop = false;
+            this.groupBoxDebug.Text = "Debug";
+            // 
+            // textBoxDebug
+            // 
+            this.textBoxDebug.Location = new System.Drawing.Point(6, 32);
+            this.textBoxDebug.Name = "textBoxDebug";
+            this.textBoxDebug.Size = new System.Drawing.Size(260, 20);
+            this.textBoxDebug.TabIndex = 0;
+            // 
+            // buttonSendDebugCommand
+            // 
+            this.buttonSendDebugCommand.Location = new System.Drawing.Point(167, 58);
+            this.buttonSendDebugCommand.Name = "buttonSendDebugCommand";
+            this.buttonSendDebugCommand.Size = new System.Drawing.Size(99, 23);
+            this.buttonSendDebugCommand.TabIndex = 1;
+            this.buttonSendDebugCommand.Text = "Send Command";
+            this.buttonSendDebugCommand.UseVisualStyleBackColor = true;
+            this.buttonSendDebugCommand.Click += new System.EventHandler(this.buttonSendDebugCommand_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 16);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(130, 13);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Send Bluetooth Command";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 92);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(133, 13);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Parse Bluetooth Response";
+            // 
+            // buttonDebugParse
+            // 
+            this.buttonDebugParse.Location = new System.Drawing.Point(167, 134);
+            this.buttonDebugParse.Name = "buttonDebugParse";
+            this.buttonDebugParse.Size = new System.Drawing.Size(99, 23);
+            this.buttonDebugParse.TabIndex = 4;
+            this.buttonDebugParse.Text = "Parse";
+            this.buttonDebugParse.UseVisualStyleBackColor = true;
+            this.buttonDebugParse.Click += new System.EventHandler(this.buttonDebugParse_Click);
+            // 
+            // textBoxDebugResponse
+            // 
+            this.textBoxDebugResponse.Location = new System.Drawing.Point(6, 108);
+            this.textBoxDebugResponse.Name = "textBoxDebugResponse";
+            this.textBoxDebugResponse.Size = new System.Drawing.Size(260, 20);
+            this.textBoxDebugResponse.TabIndex = 3;
+            // 
+            // buttonDebugGetState
+            // 
+            this.buttonDebugGetState.Location = new System.Drawing.Point(6, 171);
+            this.buttonDebugGetState.Name = "buttonDebugGetState";
+            this.buttonDebugGetState.Size = new System.Drawing.Size(115, 23);
+            this.buttonDebugGetState.TabIndex = 6;
+            this.buttonDebugGetState.Text = "GetMotor0State";
+            this.buttonDebugGetState.UseVisualStyleBackColor = true;
+            this.buttonDebugGetState.Click += new System.EventHandler(this.buttonDebugGetState_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(676, 601);
+            this.Controls.Add(this.groupBoxDebug);
             this.Controls.Add(this.groupBoxSettings);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBoxAux);
@@ -403,6 +492,8 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBoxDebug.ResumeLayout(false);
+            this.groupBoxDebug.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -438,6 +529,14 @@
         private System.Windows.Forms.RadioButton radioButtonSteerB;
         private System.Windows.Forms.RadioButton radioButtonSteerA;
         private System.Windows.Forms.Button buttonSettings;
+        private System.Windows.Forms.GroupBox groupBoxDebug;
+        private System.Windows.Forms.Button buttonSendDebugCommand;
+        private System.Windows.Forms.TextBox textBoxDebug;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button buttonDebugParse;
+        private System.Windows.Forms.TextBox textBoxDebugResponse;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button buttonDebugGetState;
     }
 }
 

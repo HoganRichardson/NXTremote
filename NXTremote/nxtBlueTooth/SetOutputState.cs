@@ -27,8 +27,8 @@ namespace NXTremote
             RampDown = 0x40  // Output will ramp-down
         }
 
-        public byte CommandType { get; }
-        public byte Command { get; }
+        public byte CommandType { get; set; }
+        public byte Command { get; set; }
         private int _outputPort;
         public int OutputPort
         {
@@ -43,6 +43,10 @@ namespace NXTremote
                 else if (value == 0xFF)
                 {
                     _outputPort = value;
+                }
+                else
+                {
+                    throw new System.ArgumentOutOfRangeException("Output Port value out of range!");
                 }
             }
         }
@@ -65,20 +69,25 @@ namespace NXTremote
         }
         public ModeType Mode { get; set; }
         public RegulationType Regulation { get; set; }
+        private int _turnRatio;
         public int TurnRatio
         {
-            get => TurnRatio;
+            get => _turnRatio;
             set
             {
                 // Must be in range [-100, 100]
                 if ((value >= -100) && (value <= 100))
                 {
-                    TurnRatio = value;
+                    _turnRatio = value;
+                }
+                else
+                {
+                    throw new System.ArgumentOutOfRangeException("Turn Ratio value out of range!");
                 }
             }
         }
         public RunStateType RunState { get; set; }
-        public ulong TachoLimit { get; }
+        public ulong TachoLimit { get; set; }
 
         public SetOutputState(int outputPort, int power, 
             ModeType m, RegulationType r, int turnRatio,
@@ -95,6 +104,11 @@ namespace NXTremote
             TachoLimit = tachoLimit; // Byte 8-12 (ulong)
         }
 
+        public SetOutputState ()
+        {
+            // Alternate empty constructor
+        }
+
         public byte[] ToCommand()
         {
             List<byte> cmdList = new List<byte>();
@@ -109,7 +123,47 @@ namespace NXTremote
             cmdList.AddRange(BitConverter.GetBytes(TachoLimit));
             byte[] command = cmdList.ToArray();
 
+            /* Debug */
+            Console.WriteLine("Command is:");
+            for (int i = 0; i < command.Length; i++)
+                Console.Write(command[i].ToString("X2") + " ");
+            Console.WriteLine("");
+            
             return command;
+        }
+
+        public void FromCommand(byte[] command)
+        {
+            CommandType = command[0];       // Byte 0
+            Command = command[1];           // Byte 1
+            OutputPort = command[2];        // Byte 2
+            Power = command[3];             // Byte 3
+            Mode = (ModeType)command[4];    // Byte 4
+            Regulation = (RegulationType)command[5];        // Byte 5
+            TurnRatio = command[6];                         // Byte 6
+            RunState = (RunStateType)command[7];            // Byte 7
+            TachoLimit = BitConverter.ToUInt64(command, 8); // Byte 8-12 (ulong)
+        }
+
+        public override string ToString()
+        {
+            string str = "";
+            str += "HEX: ";
+            byte[] command = ToCommand();
+            for (int i = 0; i < command.Length; i++)
+                str += command[i].ToString("X2") + " ";
+            str += Environment.NewLine + "---" + Environment.NewLine;
+            str += "CommandType: " + CommandType + Environment.NewLine;
+            str += "    Command: " + Command + Environment.NewLine;
+            str += " OutputPort: " + OutputPort + Environment.NewLine;
+            str += "      Power: " + Power + Environment.NewLine;
+            str += "       Mode: " + Mode.ToString("G") + Environment.NewLine;
+            str += " Regulation: " + Regulation.ToString("G") + Environment.NewLine;
+            str += "  TurnRatio: " + TurnRatio + Environment.NewLine;
+            str += "   RunState: " + RunState.ToString("G") + Environment.NewLine;
+            str += " TachoLimit: " + TachoLimit + Environment.NewLine;
+
+            return str; 
         }
     }
 }

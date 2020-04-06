@@ -70,12 +70,12 @@ namespace NXTremote
 
         private void buttonMoveUp_MouseUp(object sender, MouseEventArgs e)
         {
-            car.stopDrive();
+            //car.stopDrive();
         }
 
         private void buttonMoveDown_MouseDown(object sender, MouseEventArgs e)
         {
-            car.startDrive(-trackBarSpeed.Value);
+            //car.startDrive(-trackBarSpeed.Value);
         }
 
         private void buttonMoveDown_MouseUp(object sender, MouseEventArgs e)
@@ -129,7 +129,7 @@ namespace NXTremote
             {
                 string message = "Cannot set same motor for drive and steer!";
                 string caption = "Motor Configuration Error";
-                MessageBox.Show(message, caption, MessageBoxButtons.OK);
+                MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
@@ -169,6 +169,52 @@ namespace NXTremote
                 this.groupBoxAux.Enabled = true;
                 this.groupBoxSettings.Enabled = false;
             }
+        }
+
+        private void buttonSendDebugCommand_Click(object sender, EventArgs e)
+        {
+            string[] vals = textBoxDebug.Text.Split(' ');
+            List<byte> MsgList = new List<byte>();
+            foreach (string v in vals)
+            {
+                int val = Convert.ToInt32(v, 16);
+                MsgList.Add((byte)val);
+            }
+            byte[] command = MsgList.ToArray();
+
+            bt.SendCommand(command);
+        }
+
+        private void buttonDebugParse_Click(object sender, EventArgs e)
+        {
+            string[] vals = textBoxDebugResponse.Text.Split(' ');
+            List<byte> MsgList = new List<byte>();
+            foreach (string v in vals)
+            {
+                int val = Convert.ToInt32(v, 16);
+                MsgList.Add((byte)val);
+            }
+            byte[] command = MsgList.ToArray();
+
+            SetOutputState s = new SetOutputState();
+            s.FromCommand(command);
+
+            textBoxLog.Text += s.ToString();
+            textBoxLog.Select(textBoxLog.Text.Length, 0);
+            textBoxLog.ScrollToCaret();
+        }
+
+        private void buttonDebugGetState_Click(object sender, EventArgs e)
+        {
+            byte[] getoutputstate = { 0x00, 0x06, 0x00 }; // 0, cmd, outputPort
+            byte[] response = bt.SendCommand(getoutputstate);
+            
+            SetOutputState s = new SetOutputState();
+            s.FromCommand(response);
+            
+            textBoxLog.Text += s.ToString();
+            textBoxLog.Select(textBoxLog.Text.Length, 0);
+            textBoxLog.ScrollToCaret();
         }
     }
 }
