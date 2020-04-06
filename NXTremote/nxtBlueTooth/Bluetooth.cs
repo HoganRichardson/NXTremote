@@ -45,7 +45,7 @@ namespace NXTremote
             // Get Response
             List<byte> response = new List<byte>();
             int length = BluetoothConnection.ReadByte() + 256 * BluetoothConnection.ReadByte();
-            log += "RX:";
+            log += "RX: ";
             for (int i = 0; i < length; i++)
             {
                 response.Add((byte)BluetoothConnection.ReadByte());

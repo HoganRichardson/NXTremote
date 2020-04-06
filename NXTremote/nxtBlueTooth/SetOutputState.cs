@@ -27,6 +27,7 @@ namespace NXTremote
             RampDown = 0x40  // Output will ramp-down
         }
 
+        private bool _reverse { get; }
         public byte CommandType { get; set; }
         public byte Command { get; set; }
         private int _outputPort;
@@ -53,7 +54,18 @@ namespace NXTremote
         private int _power;
         public int Power
         {
-            get => _power;
+            get 
+            {
+                if (_reverse)
+                {
+                    return -_power;
+                }
+                else
+                {
+                    return _power;
+                }
+                
+            }
             set
             {
                 // Must be in range [-100, 100]
@@ -91,8 +103,9 @@ namespace NXTremote
 
         public SetOutputState(int outputPort, int power, 
             ModeType m, RegulationType r, int turnRatio,
-            RunStateType runState, ulong tachoLimit)
+            RunStateType runState, ulong tachoLimit, bool reverse=false)
         {
+            _reverse = reverse;      // Should direction be reversed?
             CommandType = 0x00;      // Byte 0
             Command = 0x04;          // Byte 1
             OutputPort = outputPort; // Byte 2

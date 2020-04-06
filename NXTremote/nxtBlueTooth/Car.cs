@@ -22,35 +22,32 @@ namespace NXTremote
         public Bluetooth BT { get; }
         public Motor DriveMotor { get; }
         public Motor SteerMotor { get; }
-        public int SteerLimit { get; }
-        private int TURN_RATIO = 100; // Default, may need to modify TODO
-        private int STEER_SPEED = 50; // Default, may need to modify TODO
+        private int STEER_SPEED = 64; 
         private SetOutputState DriveOutput { get; }
         private SetOutputState SteerOutput { get; }
 
-        public Car (Bluetooth bt, Motor driveMotor, Motor steerMotor, int steerLimit = 0)
+        public Car (Bluetooth bt, Motor driveMotor, Motor steerMotor, 
+            bool drive_reverse = false, bool steer_reverse = false)
         {
             BT = bt;
             DriveMotor = driveMotor;
             SteerMotor = steerMotor;
-            SteerLimit = steerLimit;
-            Console.WriteLine("The code is " + DriveMotor.GetHashCode());
+
             DriveOutput = new SetOutputState(DriveMotor.GetHashCode(), 0,
-                SetOutputState.ModeType.MotorOn, SetOutputState.RegulationType.MotorSpeed, TURN_RATIO,
-                SetOutputState.RunStateType.RampUp, 0);
+                SetOutputState.ModeType.MotorOn, SetOutputState.RegulationType.MotorSpeed, 0,
+                SetOutputState.RunStateType.Running, 0, drive_reverse);
 
             SteerOutput = new SetOutputState(SteerMotor.GetHashCode(), 0,
-                SetOutputState.ModeType.MotorOn, SetOutputState.RegulationType.MotorSpeed, TURN_RATIO,
-                SetOutputState.RunStateType.RampUp, 0);
+                SetOutputState.ModeType.MotorOn, SetOutputState.RegulationType.MotorSpeed, 0,
+                SetOutputState.RunStateType.Running, 0, steer_reverse);
         }
 
         /* Driving Control */
         public void startDrive(int speed)
         {
-            // Set DriveOutput to ramp up to `speed` and send command
             DriveOutput.Power = speed;
-            DriveOutput.RunState = SetOutputState.RunStateType.RampUp;
-            DriveOutput.TachoLimit = 240;
+            DriveOutput.TurnRatio = speed;
+            DriveOutput.RunState = SetOutputState.RunStateType.Running;
 
             BT.SendCommand(DriveOutput.ToCommand());
         }
@@ -58,27 +55,48 @@ namespace NXTremote
         public void stopDrive()
         {
             DriveOutput.Power = 0;
-            DriveOutput.Mode = SetOutputState.ModeType.Brake;
-            DriveOutput.RunState = SetOutputState.RunStateType.Running; // TODO check this?
+            DriveOutput.TurnRatio = 0;
             DriveOutput.TachoLimit = 0;
-            
+
             BT.SendCommand(DriveOutput.ToCommand());
         }
 
         public void speedAdjust(int newSpeed)
         {
+            /* Exactly the same as 'start drive' */
+            DriveOutput.Power = newSpeed;
+            DriveOutput.TurnRatio = newSpeed;
+            DriveOutput.RunState = SetOutputState.RunStateType.Running;
 
+            BT.SendCommand(DriveOutput.ToCommand());
         }
 
         /* Steering Control */
         public void startTurn (Turn direction)
         {
+            int speed;   
+            if (direction == Turn.left)
+            {
+                speed = STEER_SPEED;
+            } 
+            else
+            {
+                speed = -STEER_SPEED;
+            }
 
+            SteerOutput.Power = speed;
+            SteerOutput.TurnRatio = speed;
+            SteerOutput.RunState = SetOutputState.RunStateType.Running;
+
+            BT.SendCommand(SteerOutput.ToCommand());
         }
 
         public void stopTurn ()
         {
+            SteerOutput.Power = 0;
+            SteerOutput.TurnRatio = 0;
 
+            BT.SendCommand(SteerOutput.ToCommand());
         }
     }
 }

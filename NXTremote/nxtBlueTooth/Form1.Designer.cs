@@ -64,6 +64,8 @@
             this.buttonDebugParse = new System.Windows.Forms.Button();
             this.textBoxDebugResponse = new System.Windows.Forms.TextBox();
             this.buttonDebugGetState = new System.Windows.Forms.Button();
+            this.checkBoxReverseDrive = new System.Windows.Forms.CheckBox();
+            this.checkBoxReverseSteer = new System.Windows.Forms.CheckBox();
             this.groupBoxInit.SuspendLayout();
             this.groupBoxControls.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarSpeed)).BeginInit();
@@ -181,12 +183,13 @@
             this.trackBarSpeed.LargeChange = 10;
             this.trackBarSpeed.Location = new System.Drawing.Point(55, 237);
             this.trackBarSpeed.Maximum = 100;
+            this.trackBarSpeed.Minimum = 64;
             this.trackBarSpeed.Name = "trackBarSpeed";
             this.trackBarSpeed.Size = new System.Drawing.Size(264, 45);
             this.trackBarSpeed.SmallChange = 5;
             this.trackBarSpeed.TabIndex = 4;
-            this.trackBarSpeed.TickFrequency = 10;
-            this.trackBarSpeed.Value = 50;
+            this.trackBarSpeed.TickFrequency = 2;
+            this.trackBarSpeed.Value = 100;
             this.trackBarSpeed.ValueChanged += new System.EventHandler(this.trackBarSpeed_ValueChanged);
             // 
             // buttonTurnLeft
@@ -303,6 +306,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.checkBoxReverseSteer);
             this.groupBox2.Controls.Add(this.radioButtonSteerC);
             this.groupBox2.Controls.Add(this.radioButtonSteerB);
             this.groupBox2.Controls.Add(this.radioButtonSteerA);
@@ -316,7 +320,7 @@
             // radioButtonSteerC
             // 
             this.radioButtonSteerC.AutoSize = true;
-            this.radioButtonSteerC.Location = new System.Drawing.Point(88, 28);
+            this.radioButtonSteerC.Location = new System.Drawing.Point(88, 19);
             this.radioButtonSteerC.Name = "radioButtonSteerC";
             this.radioButtonSteerC.Size = new System.Drawing.Size(32, 17);
             this.radioButtonSteerC.TabIndex = 5;
@@ -327,7 +331,7 @@
             // 
             this.radioButtonSteerB.AutoSize = true;
             this.radioButtonSteerB.Checked = true;
-            this.radioButtonSteerB.Location = new System.Drawing.Point(50, 28);
+            this.radioButtonSteerB.Location = new System.Drawing.Point(50, 19);
             this.radioButtonSteerB.Name = "radioButtonSteerB";
             this.radioButtonSteerB.Size = new System.Drawing.Size(32, 17);
             this.radioButtonSteerB.TabIndex = 4;
@@ -338,7 +342,7 @@
             // radioButtonSteerA
             // 
             this.radioButtonSteerA.AutoSize = true;
-            this.radioButtonSteerA.Location = new System.Drawing.Point(7, 28);
+            this.radioButtonSteerA.Location = new System.Drawing.Point(7, 19);
             this.radioButtonSteerA.Name = "radioButtonSteerA";
             this.radioButtonSteerA.Size = new System.Drawing.Size(32, 17);
             this.radioButtonSteerA.TabIndex = 3;
@@ -347,6 +351,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.checkBoxReverseDrive);
             this.groupBox1.Controls.Add(this.radioButtonDriveC);
             this.groupBox1.Controls.Add(this.radioButtonDriveB);
             this.groupBox1.Controls.Add(this.radioButtonDriveA);
@@ -360,7 +365,7 @@
             // radioButtonDriveC
             // 
             this.radioButtonDriveC.AutoSize = true;
-            this.radioButtonDriveC.Location = new System.Drawing.Point(87, 28);
+            this.radioButtonDriveC.Location = new System.Drawing.Point(87, 19);
             this.radioButtonDriveC.Name = "radioButtonDriveC";
             this.radioButtonDriveC.Size = new System.Drawing.Size(32, 17);
             this.radioButtonDriveC.TabIndex = 2;
@@ -370,7 +375,7 @@
             // radioButtonDriveB
             // 
             this.radioButtonDriveB.AutoSize = true;
-            this.radioButtonDriveB.Location = new System.Drawing.Point(49, 28);
+            this.radioButtonDriveB.Location = new System.Drawing.Point(49, 19);
             this.radioButtonDriveB.Name = "radioButtonDriveB";
             this.radioButtonDriveB.Size = new System.Drawing.Size(32, 17);
             this.radioButtonDriveB.TabIndex = 1;
@@ -381,7 +386,7 @@
             // 
             this.radioButtonDriveA.AutoSize = true;
             this.radioButtonDriveA.Checked = true;
-            this.radioButtonDriveA.Location = new System.Drawing.Point(6, 28);
+            this.radioButtonDriveA.Location = new System.Drawing.Point(6, 19);
             this.radioButtonDriveA.Name = "radioButtonDriveA";
             this.radioButtonDriveA.Size = new System.Drawing.Size(32, 17);
             this.radioButtonDriveA.TabIndex = 0;
@@ -467,6 +472,26 @@
             this.buttonDebugGetState.UseVisualStyleBackColor = true;
             this.buttonDebugGetState.Click += new System.EventHandler(this.buttonDebugGetState_Click);
             // 
+            // checkBoxReverseDrive
+            // 
+            this.checkBoxReverseDrive.AutoSize = true;
+            this.checkBoxReverseDrive.Location = new System.Drawing.Point(6, 45);
+            this.checkBoxReverseDrive.Name = "checkBoxReverseDrive";
+            this.checkBoxReverseDrive.Size = new System.Drawing.Size(66, 17);
+            this.checkBoxReverseDrive.TabIndex = 3;
+            this.checkBoxReverseDrive.Text = "Reverse";
+            this.checkBoxReverseDrive.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxReverseSteer
+            // 
+            this.checkBoxReverseSteer.AutoSize = true;
+            this.checkBoxReverseSteer.Location = new System.Drawing.Point(7, 45);
+            this.checkBoxReverseSteer.Name = "checkBoxReverseSteer";
+            this.checkBoxReverseSteer.Size = new System.Drawing.Size(66, 17);
+            this.checkBoxReverseSteer.TabIndex = 6;
+            this.checkBoxReverseSteer.Text = "Reverse";
+            this.checkBoxReverseSteer.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -537,6 +562,8 @@
         private System.Windows.Forms.TextBox textBoxDebugResponse;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button buttonDebugGetState;
+        private System.Windows.Forms.CheckBox checkBoxReverseSteer;
+        private System.Windows.Forms.CheckBox checkBoxReverseDrive;
     }
 }
 

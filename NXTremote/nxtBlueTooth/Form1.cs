@@ -23,14 +23,14 @@ namespace NXTremote
         /*** EVENT HANDLERS ***/
         private void GetVersion_Click(object sender, EventArgs e)
         {
-            byte[] NxtMessage = {0x01, 0x88 };
+            byte[] NxtMessage = { 0x01, 0x88 };
             bt.SendCommand(NxtMessage);
            
         }
 
         private void GetInfo_Click(object sender, EventArgs e)
         {
-            byte[] NxtMessage = {0x01, 0x9B };
+            byte[] NxtMessage = { 0x01, 0x9B };
             bt.SendCommand(NxtMessage);
         }
 
@@ -70,12 +70,12 @@ namespace NXTremote
 
         private void buttonMoveUp_MouseUp(object sender, MouseEventArgs e)
         {
-            //car.stopDrive();
+            car.stopDrive();
         }
 
         private void buttonMoveDown_MouseDown(object sender, MouseEventArgs e)
         {
-            //car.startDrive(-trackBarSpeed.Value);
+            car.startDrive(-trackBarSpeed.Value);
         }
 
         private void buttonMoveDown_MouseUp(object sender, MouseEventArgs e)
@@ -136,6 +136,9 @@ namespace NXTremote
                 Car.Motor driveMotor = 0;
                 Car.Motor steerMotor = 0;
 
+                bool drive_reverse = false;
+                bool steer_reverse = false;
+
                 if (radioButtonDriveA.Checked == true)
                 {
                     driveMotor = Car.Motor.A;
@@ -162,8 +165,17 @@ namespace NXTremote
                     steerMotor = Car.Motor.C;
                 }
 
+                if (checkBoxReverseDrive.Checked == true)
+                {
+                    drive_reverse = true;
+                }
+                if (checkBoxReverseSteer.Checked == true)
+                {
+                    steer_reverse = true;
+                }
+
                 // Initialise Car Instance
-                car = new Car(bt, driveMotor, steerMotor); // TODO add limit
+                car = new Car(bt, driveMotor, steerMotor, drive_reverse, steer_reverse);
              
                 this.groupBoxControls.Enabled = true;
                 this.groupBoxAux.Enabled = true;
