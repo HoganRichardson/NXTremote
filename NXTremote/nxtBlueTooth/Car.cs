@@ -19,6 +19,11 @@ namespace NXTremote
             left,
             right
         }
+        public enum Direction
+        {
+            forward,
+            reverse
+        }
         public Bluetooth BT { get; }
         public Motor DriveMotor { get; }
         public Motor SteerMotor { get; }
@@ -43,11 +48,16 @@ namespace NXTremote
         }
 
         /* Driving Control */
-        public void startDrive(int speed)
+        public void startDrive(int speed, Direction d)
         {
+            if (d == Direction.reverse)
+            {
+                speed = -speed;
+            }
             DriveOutput.Power = speed;
             DriveOutput.TurnRatio = speed;
             DriveOutput.RunState = SetOutputState.RunStateType.Running;
+            Console.WriteLine("Drive Speed: " + DriveOutput.getPower());
 
             BT.SendCommand(DriveOutput.ToCommand());
         }
@@ -57,18 +67,28 @@ namespace NXTremote
             DriveOutput.Power = 0;
             DriveOutput.TurnRatio = 0;
             DriveOutput.TachoLimit = 0;
-
+            
             BT.SendCommand(DriveOutput.ToCommand());
         }
 
         public void speedAdjust(int newSpeed)
         {
-            /* Exactly the same as 'start drive' */
-            DriveOutput.Power = newSpeed;
-            DriveOutput.TurnRatio = newSpeed;
-            DriveOutput.RunState = SetOutputState.RunStateType.Running;
+            int power = DriveOutput.getPower();
+            if (power != 0) // Don't drive motor if currently stopped
+            {
+                /* Exactly the same as 'start drive' */
+                if (power < 0)
+                {
+                    newSpeed = -newSpeed; 
+                }
 
-            BT.SendCommand(DriveOutput.ToCommand());
+                DriveOutput.Power = newSpeed;
+                DriveOutput.TurnRatio = newSpeed;
+                DriveOutput.RunState = SetOutputState.RunStateType.Running;
+
+                BT.SendCommand(DriveOutput.ToCommand());
+            }
+           
         }
 
         /* Steering Control */
@@ -97,6 +117,17 @@ namespace NXTremote
             SteerOutput.TurnRatio = 0;
 
             BT.SendCommand(SteerOutput.ToCommand());
+        }
+
+        public void playSound (PlaySound sound)
+        {
+            BT.SendCommand(sound.ToCommand());
+        }
+
+        public void stopSound()
+        {
+            byte[] stopSound = { 0x00, 0x0C };
+            BT.SendCommand(stopSound);
         }
     }
 }

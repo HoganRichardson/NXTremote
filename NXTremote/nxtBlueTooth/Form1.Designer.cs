@@ -258,7 +258,7 @@
             this.buttonSiren.Name = "buttonSiren";
             this.buttonSiren.Size = new System.Drawing.Size(100, 55);
             this.buttonSiren.TabIndex = 1;
-            this.buttonSiren.Text = "Siren";
+            this.buttonSiren.Text = "Turn on Siren";
             this.buttonSiren.UseVisualStyleBackColor = true;
             this.buttonSiren.Click += new System.EventHandler(this.buttonSiren_Click);
             // 
@@ -506,6 +506,8 @@
             this.Controls.Add(this.textBoxLog);
             this.Name = "Form1";
             this.Text = "NXT Bluetooth";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             this.groupBoxInit.ResumeLayout(false);
             this.groupBoxInit.PerformLayout();
             this.groupBoxControls.ResumeLayout(false);

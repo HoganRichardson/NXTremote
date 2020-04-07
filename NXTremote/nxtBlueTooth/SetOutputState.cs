@@ -135,12 +135,6 @@ namespace NXTremote
             cmdList.Add((byte)RunState);
             cmdList.AddRange(BitConverter.GetBytes(TachoLimit));
             byte[] command = cmdList.ToArray();
-
-            /* Debug */
-            Console.WriteLine("Command is:");
-            for (int i = 0; i < command.Length; i++)
-                Console.Write(command[i].ToString("X2") + " ");
-            Console.WriteLine("");
             
             return command;
         }
@@ -177,6 +171,10 @@ namespace NXTremote
             str += " TachoLimit: " + TachoLimit + Environment.NewLine;
 
             return str; 
+        }
+        public int getPower()
+        {
+            return _power;
         }
     }
 }

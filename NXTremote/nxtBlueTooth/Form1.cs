@@ -14,10 +14,39 @@ namespace NXTremote
 
         private Bluetooth bt = null;
         private Car car = null;
+        private PlaySound sirenSound = null;
+        private PlaySound hornSound = null;
+        private bool siren_on = false;
         public Form1()
         {
             InitializeComponent();
             bt = new Bluetooth(this.textBoxLog);
+            sirenSound = new PlaySound("siren.rso", true);
+            hornSound = new PlaySound("horn.rso");
+        }
+
+        /* Sound Helpers */
+        private void soundSiren()
+        {
+            if (siren_on)
+            {
+                car.stopSound();
+                siren_on = false;
+                buttonSiren.Text = "Turn on siren";
+                
+            }
+            else
+            {
+                car.stopSound(); // Stop any currently-playing sound
+                car.playSound(sirenSound);
+                siren_on = true;
+                buttonSiren.Text = "Turn off siren";
+            }
+        }
+        private void soundHorn()
+        {
+            car.stopSound(); // Stop any currently-playing sound
+            car.playSound(hornSound);
         }
 
         /*** EVENT HANDLERS ***/
@@ -65,7 +94,7 @@ namespace NXTremote
         /* Direction Buttons */
         private void buttonMoveUp_MouseDown(object sender, MouseEventArgs e)
         {
-            car.startDrive(trackBarSpeed.Value);
+            car.startDrive(trackBarSpeed.Value, Car.Direction.forward);
         }
 
         private void buttonMoveUp_MouseUp(object sender, MouseEventArgs e)
@@ -75,7 +104,7 @@ namespace NXTremote
 
         private void buttonMoveDown_MouseDown(object sender, MouseEventArgs e)
         {
-            car.startDrive(-trackBarSpeed.Value);
+            car.startDrive(trackBarSpeed.Value, Car.Direction.reverse);
         }
 
         private void buttonMoveDown_MouseUp(object sender, MouseEventArgs e)
@@ -112,12 +141,12 @@ namespace NXTremote
         /* Auxiliary Buttons */
         private void buttonHorn_Click(object sender, EventArgs e)
         {
-
+            soundHorn();
         }
 
         private void buttonSiren_Click(object sender, EventArgs e)
         {
-
+            soundSiren();
         }
 
         /* Settings */
@@ -177,9 +206,13 @@ namespace NXTremote
                 // Initialise Car Instance
                 car = new Car(bt, driveMotor, steerMotor, drive_reverse, steer_reverse);
              
+                // UI Changes
                 this.groupBoxControls.Enabled = true;
                 this.groupBoxAux.Enabled = true;
                 this.groupBoxSettings.Enabled = false;
+
+                // Enable keyboard shortcuts
+                this.KeyPreview = true;
             }
         }
 
@@ -227,6 +260,87 @@ namespace NXTremote
             textBoxLog.Text += s.ToString();
             textBoxLog.Select(textBoxLog.Text.Length, 0);
             textBoxLog.ScrollToCaret();
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            /* Comma Key: Slow Down */
+            if (e.KeyCode == Keys.Oemcomma)
+            {
+                int newspeed = trackBarSpeed.Value - trackBarSpeed.SmallChange;
+                if (newspeed < trackBarSpeed.Minimum)
+                {
+                    trackBarSpeed.Value = trackBarSpeed.Minimum;
+                }
+                else
+                {
+                    trackBarSpeed.Value = newspeed;
+                }
+            }
+            /* Period Key: Speed Up */
+            if (e.KeyCode == Keys.OemPeriod)
+            {
+                int newspeed = trackBarSpeed.Value + trackBarSpeed.SmallChange;
+                if (newspeed > trackBarSpeed.Maximum)
+                {
+                    trackBarSpeed.Value = trackBarSpeed.Maximum;
+                }
+                else
+                {
+                    trackBarSpeed.Value = newspeed;
+                }
+            }
+
+            /* Arrow Keys: Movement Control */
+            if (e.KeyCode == Keys.Up)
+            {
+                car.startDrive(trackBarSpeed.Value, Car.Direction.forward);
+            }
+            if (e.KeyCode == Keys.Down)
+            {
+                car.startDrive(trackBarSpeed.Value, Car.Direction.reverse);
+            }
+            if (e.KeyCode == Keys.Left)
+            {
+                car.startTurn(Car.Turn.left);
+            }
+            if (e.KeyCode == Keys.Right)
+            {
+                car.startTurn(Car.Turn.right);
+            }
+
+            /* Auxiliary Control */
+            if (e.KeyCode == Keys.H)
+            {
+                // Horn
+                soundHorn();
+            }
+            if (e.KeyCode == Keys.S)
+            {
+                // Siren
+                soundSiren();
+            }
+        }
+
+        private void Form1_KeyUp(object sender, KeyEventArgs e)
+        {
+            /* Arrow Keys: Movement Control Release */
+            if (e.KeyCode == Keys.Up)
+            {
+                car.stopDrive();
+            }
+            if (e.KeyCode == Keys.Down)
+            {
+                car.stopDrive();
+            }
+            if (e.KeyCode == Keys.Left)
+            {
+                car.stopTurn();
+            }
+            if (e.KeyCode == Keys.Right)
+            {
+                car.stopTurn();
+            }
         }
     }
 }
