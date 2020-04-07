@@ -1,0 +1,13 @@
+C:\Users\hoganrichardson\git\NXTremote\src\NXTremote Windows\nxtBlueTooth\bin\Release\NXTremote.exe
+C:\Users\hoganrichardson\git\NXTremote\src\NXTremote Windows\nxtBlueTooth\bin\Release\NXTremote.pdb
+C:\Users\hoganrichardson\git\NXTremote\src\NXTremote Windows\nxtBlueTooth\obj\Release\NXTremote.Form1.resources
+C:\Users\hoganrichardson\git\NXTremote\src\NXTremote Windows\nxtBlueTooth\obj\Release\NXTremote.Properties.Resources.resources
+C:\Users\hoganrichardson\git\NXTremote\src\NXTremote Windows\nxtBlueTooth\obj\Release\NXTremote.csproj.GenerateResource.cache
+C:\Users\hoganrichardson\git\NXTremote\src\NXTremote Windows\nxtBlueTooth\obj\Release\NXTremote.csproj.CoreCompileInputs.cache
+C:\Users\hoganrichardson\git\NXTremote\src\NXTremote Windows\nxtBlueTooth\obj\Release\NXTremote.exe
+C:\Users\hoganrichardson\git\NXTremote\src\NXTremote Windows\nxtBlueTooth\obj\Release\NXTremote.pdb
+C:\Users\hoganrichardson\git\NXTremote\src\NXTremote Windows\nxtBlueTooth\bin\Release\NXTremote.exe.manifest
+C:\Users\hoganrichardson\git\NXTremote\src\NXTremote Windows\nxtBlueTooth\bin\Release\NXTremote.application
+C:\Users\hoganrichardson\git\NXTremote\src\NXTremote Windows\nxtBlueTooth\obj\Release\NXTremote.exe.manifest
+C:\Users\hoganrichardson\git\NXTremote\src\NXTremote Windows\nxtBlueTooth\obj\Release\NXTremote.application
+C:\Users\hoganrichardson\git\NXTremote\src\NXTremote Windows\nxtBlueTooth\obj\Release\NXTremote.csprojAssemblyReference.cache
