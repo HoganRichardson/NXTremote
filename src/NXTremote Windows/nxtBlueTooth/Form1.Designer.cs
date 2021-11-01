@@ -79,18 +79,20 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(65, 19);
+            this.textBox1.Location = new System.Drawing.Point(87, 23);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(49, 20);
+            this.textBox1.Size = new System.Drawing.Size(64, 22);
             this.textBox1.TabIndex = 0;
             this.textBox1.Text = "COM4";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 22);
+            this.label1.Location = new System.Drawing.Point(8, 27);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 13);
+            this.label1.Size = new System.Drawing.Size(69, 17);
             this.label1.TabIndex = 2;
             this.label1.Text = "COM Port";
             // 
@@ -100,20 +102,22 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxLog.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxLog.Location = new System.Drawing.Point(392, 235);
+            this.textBoxLog.Location = new System.Drawing.Point(523, 289);
+            this.textBoxLog.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxLog.Multiline = true;
             this.textBoxLog.Name = "textBoxLog";
             this.textBoxLog.ReadOnly = true;
             this.textBoxLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxLog.Size = new System.Drawing.Size(272, 354);
+            this.textBoxLog.Size = new System.Drawing.Size(361, 435);
             this.textBoxLog.TabIndex = 3;
             // 
             // buttonGetInfo
             // 
             this.buttonGetInfo.Enabled = false;
-            this.buttonGetInfo.Location = new System.Drawing.Point(270, 47);
+            this.buttonGetInfo.Location = new System.Drawing.Point(360, 58);
+            this.buttonGetInfo.Margin = new System.Windows.Forms.Padding(4);
             this.buttonGetInfo.Name = "buttonGetInfo";
-            this.buttonGetInfo.Size = new System.Drawing.Size(98, 25);
+            this.buttonGetInfo.Size = new System.Drawing.Size(131, 31);
             this.buttonGetInfo.TabIndex = 1;
             this.buttonGetInfo.Text = "Get NXT Info";
             this.buttonGetInfo.UseVisualStyleBackColor = true;
@@ -122,9 +126,10 @@
             // buttonGetVersion
             // 
             this.buttonGetVersion.Enabled = false;
-            this.buttonGetVersion.Location = new System.Drawing.Point(270, 12);
+            this.buttonGetVersion.Location = new System.Drawing.Point(360, 15);
+            this.buttonGetVersion.Margin = new System.Windows.Forms.Padding(4);
             this.buttonGetVersion.Name = "buttonGetVersion";
-            this.buttonGetVersion.Size = new System.Drawing.Size(98, 25);
+            this.buttonGetVersion.Size = new System.Drawing.Size(131, 31);
             this.buttonGetVersion.TabIndex = 1;
             this.buttonGetVersion.Text = "Get NXT Version";
             this.buttonGetVersion.UseVisualStyleBackColor = true;
@@ -132,9 +137,10 @@
             // 
             // buttonConnect
             // 
-            this.buttonConnect.Location = new System.Drawing.Point(120, 16);
+            this.buttonConnect.Location = new System.Drawing.Point(160, 20);
+            this.buttonConnect.Margin = new System.Windows.Forms.Padding(4);
             this.buttonConnect.Name = "buttonConnect";
-            this.buttonConnect.Size = new System.Drawing.Size(87, 25);
+            this.buttonConnect.Size = new System.Drawing.Size(116, 31);
             this.buttonConnect.TabIndex = 6;
             this.buttonConnect.Text = "Connect";
             this.buttonConnect.UseVisualStyleBackColor = true;
@@ -147,9 +153,11 @@
             this.groupBoxInit.Controls.Add(this.buttonConnect);
             this.groupBoxInit.Controls.Add(this.buttonGetInfo);
             this.groupBoxInit.Controls.Add(this.buttonGetVersion);
-            this.groupBoxInit.Location = new System.Drawing.Point(12, 12);
+            this.groupBoxInit.Location = new System.Drawing.Point(16, 15);
+            this.groupBoxInit.Margin = new System.Windows.Forms.Padding(4);
             this.groupBoxInit.Name = "groupBoxInit";
-            this.groupBoxInit.Size = new System.Drawing.Size(374, 83);
+            this.groupBoxInit.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBoxInit.Size = new System.Drawing.Size(499, 102);
             this.groupBoxInit.TabIndex = 12;
             this.groupBoxInit.TabStop = false;
             this.groupBoxInit.Text = "Initialisation";
@@ -163,9 +171,11 @@
             this.groupBoxControls.Controls.Add(this.buttonMoveDown);
             this.groupBoxControls.Controls.Add(this.buttonMoveUp);
             this.groupBoxControls.Enabled = false;
-            this.groupBoxControls.Location = new System.Drawing.Point(12, 200);
+            this.groupBoxControls.Location = new System.Drawing.Point(16, 246);
+            this.groupBoxControls.Margin = new System.Windows.Forms.Padding(4);
             this.groupBoxControls.Name = "groupBoxControls";
-            this.groupBoxControls.Size = new System.Drawing.Size(374, 303);
+            this.groupBoxControls.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBoxControls.Size = new System.Drawing.Size(499, 373);
             this.groupBoxControls.TabIndex = 13;
             this.groupBoxControls.TabStop = false;
             this.groupBoxControls.Text = "Controls";
@@ -173,20 +183,22 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(55, 218);
+            this.label2.Location = new System.Drawing.Point(73, 268);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 13);
+            this.label2.Size = new System.Drawing.Size(49, 17);
             this.label2.TabIndex = 5;
             this.label2.Text = "Speed";
             // 
             // trackBarSpeed
             // 
             this.trackBarSpeed.LargeChange = 10;
-            this.trackBarSpeed.Location = new System.Drawing.Point(55, 237);
+            this.trackBarSpeed.Location = new System.Drawing.Point(73, 292);
+            this.trackBarSpeed.Margin = new System.Windows.Forms.Padding(4);
             this.trackBarSpeed.Maximum = 100;
             this.trackBarSpeed.Minimum = 64;
             this.trackBarSpeed.Name = "trackBarSpeed";
-            this.trackBarSpeed.Size = new System.Drawing.Size(264, 45);
+            this.trackBarSpeed.Size = new System.Drawing.Size(352, 56);
             this.trackBarSpeed.SmallChange = 5;
             this.trackBarSpeed.TabIndex = 4;
             this.trackBarSpeed.TickFrequency = 2;
@@ -196,9 +208,10 @@
             // buttonTurnLeft
             // 
             this.buttonTurnLeft.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonTurnLeft.Location = new System.Drawing.Point(55, 109);
+            this.buttonTurnLeft.Location = new System.Drawing.Point(73, 134);
+            this.buttonTurnLeft.Margin = new System.Windows.Forms.Padding(4);
             this.buttonTurnLeft.Name = "buttonTurnLeft";
-            this.buttonTurnLeft.Size = new System.Drawing.Size(84, 84);
+            this.buttonTurnLeft.Size = new System.Drawing.Size(112, 103);
             this.buttonTurnLeft.TabIndex = 3;
             this.buttonTurnLeft.Text = "🠔";
             this.buttonTurnLeft.UseVisualStyleBackColor = true;
@@ -208,9 +221,10 @@
             // buttonTurnRight
             // 
             this.buttonTurnRight.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonTurnRight.Location = new System.Drawing.Point(235, 109);
+            this.buttonTurnRight.Location = new System.Drawing.Point(313, 134);
+            this.buttonTurnRight.Margin = new System.Windows.Forms.Padding(4);
             this.buttonTurnRight.Name = "buttonTurnRight";
-            this.buttonTurnRight.Size = new System.Drawing.Size(84, 84);
+            this.buttonTurnRight.Size = new System.Drawing.Size(112, 103);
             this.buttonTurnRight.TabIndex = 2;
             this.buttonTurnRight.Text = "🠖";
             this.buttonTurnRight.UseVisualStyleBackColor = true;
@@ -220,9 +234,10 @@
             // buttonMoveDown
             // 
             this.buttonMoveDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonMoveDown.Location = new System.Drawing.Point(145, 109);
+            this.buttonMoveDown.Location = new System.Drawing.Point(193, 134);
+            this.buttonMoveDown.Margin = new System.Windows.Forms.Padding(4);
             this.buttonMoveDown.Name = "buttonMoveDown";
-            this.buttonMoveDown.Size = new System.Drawing.Size(84, 84);
+            this.buttonMoveDown.Size = new System.Drawing.Size(112, 103);
             this.buttonMoveDown.TabIndex = 1;
             this.buttonMoveDown.Text = "🠗";
             this.buttonMoveDown.UseVisualStyleBackColor = true;
@@ -232,9 +247,10 @@
             // buttonMoveUp
             // 
             this.buttonMoveUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonMoveUp.Location = new System.Drawing.Point(145, 19);
+            this.buttonMoveUp.Location = new System.Drawing.Point(193, 23);
+            this.buttonMoveUp.Margin = new System.Windows.Forms.Padding(4);
             this.buttonMoveUp.Name = "buttonMoveUp";
-            this.buttonMoveUp.Size = new System.Drawing.Size(84, 84);
+            this.buttonMoveUp.Size = new System.Drawing.Size(112, 103);
             this.buttonMoveUp.TabIndex = 0;
             this.buttonMoveUp.Text = "🠕";
             this.buttonMoveUp.UseVisualStyleBackColor = true;
@@ -246,18 +262,21 @@
             this.groupBoxAux.Controls.Add(this.buttonSiren);
             this.groupBoxAux.Controls.Add(this.buttonHorn);
             this.groupBoxAux.Enabled = false;
-            this.groupBoxAux.Location = new System.Drawing.Point(12, 509);
+            this.groupBoxAux.Location = new System.Drawing.Point(16, 626);
+            this.groupBoxAux.Margin = new System.Windows.Forms.Padding(4);
             this.groupBoxAux.Name = "groupBoxAux";
-            this.groupBoxAux.Size = new System.Drawing.Size(374, 80);
+            this.groupBoxAux.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBoxAux.Size = new System.Drawing.Size(499, 98);
             this.groupBoxAux.TabIndex = 14;
             this.groupBoxAux.TabStop = false;
             this.groupBoxAux.Text = "Auxiliary";
             // 
             // buttonSiren
             // 
-            this.buttonSiren.Location = new System.Drawing.Point(117, 19);
+            this.buttonSiren.Location = new System.Drawing.Point(156, 23);
+            this.buttonSiren.Margin = new System.Windows.Forms.Padding(4);
             this.buttonSiren.Name = "buttonSiren";
-            this.buttonSiren.Size = new System.Drawing.Size(100, 55);
+            this.buttonSiren.Size = new System.Drawing.Size(133, 68);
             this.buttonSiren.TabIndex = 1;
             this.buttonSiren.Text = "Turn on Siren";
             this.buttonSiren.UseVisualStyleBackColor = true;
@@ -265,9 +284,10 @@
             // 
             // buttonHorn
             // 
-            this.buttonHorn.Location = new System.Drawing.Point(6, 19);
+            this.buttonHorn.Location = new System.Drawing.Point(8, 23);
+            this.buttonHorn.Margin = new System.Windows.Forms.Padding(4);
             this.buttonHorn.Name = "buttonHorn";
-            this.buttonHorn.Size = new System.Drawing.Size(105, 55);
+            this.buttonHorn.Size = new System.Drawing.Size(140, 68);
             this.buttonHorn.TabIndex = 0;
             this.buttonHorn.Text = "Horn";
             this.buttonHorn.UseVisualStyleBackColor = true;
@@ -276,9 +296,10 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(395, 219);
+            this.label3.Location = new System.Drawing.Point(527, 270);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(25, 13);
+            this.label3.Size = new System.Drawing.Size(32, 17);
             this.label3.TabIndex = 15;
             this.label3.Text = "Log";
             // 
@@ -288,18 +309,21 @@
             this.groupBoxSettings.Controls.Add(this.groupBox2);
             this.groupBoxSettings.Controls.Add(this.groupBox1);
             this.groupBoxSettings.Enabled = false;
-            this.groupBoxSettings.Location = new System.Drawing.Point(12, 101);
+            this.groupBoxSettings.Location = new System.Drawing.Point(16, 124);
+            this.groupBoxSettings.Margin = new System.Windows.Forms.Padding(4);
             this.groupBoxSettings.Name = "groupBoxSettings";
-            this.groupBoxSettings.Size = new System.Drawing.Size(374, 93);
+            this.groupBoxSettings.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBoxSettings.Size = new System.Drawing.Size(499, 114);
             this.groupBoxSettings.TabIndex = 16;
             this.groupBoxSettings.TabStop = false;
             this.groupBoxSettings.Text = "Settings";
             // 
             // buttonSettings
             // 
-            this.buttonSettings.Location = new System.Drawing.Point(281, 60);
+            this.buttonSettings.Location = new System.Drawing.Point(375, 74);
+            this.buttonSettings.Margin = new System.Windows.Forms.Padding(4);
             this.buttonSettings.Name = "buttonSettings";
-            this.buttonSettings.Size = new System.Drawing.Size(87, 27);
+            this.buttonSettings.Size = new System.Drawing.Size(116, 33);
             this.buttonSettings.TabIndex = 2;
             this.buttonSettings.Text = "Set";
             this.buttonSettings.UseVisualStyleBackColor = true;
@@ -311,9 +335,11 @@
             this.groupBox2.Controls.Add(this.radioButtonSteerC);
             this.groupBox2.Controls.Add(this.radioButtonSteerB);
             this.groupBox2.Controls.Add(this.radioButtonSteerA);
-            this.groupBox2.Location = new System.Drawing.Point(145, 19);
+            this.groupBox2.Location = new System.Drawing.Point(193, 23);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(130, 68);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Size = new System.Drawing.Size(173, 84);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Steering Motor";
@@ -321,9 +347,10 @@
             // checkBoxReverseSteer
             // 
             this.checkBoxReverseSteer.AutoSize = true;
-            this.checkBoxReverseSteer.Location = new System.Drawing.Point(7, 45);
+            this.checkBoxReverseSteer.Location = new System.Drawing.Point(9, 55);
+            this.checkBoxReverseSteer.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxReverseSteer.Name = "checkBoxReverseSteer";
-            this.checkBoxReverseSteer.Size = new System.Drawing.Size(66, 17);
+            this.checkBoxReverseSteer.Size = new System.Drawing.Size(83, 21);
             this.checkBoxReverseSteer.TabIndex = 6;
             this.checkBoxReverseSteer.Text = "Reverse";
             this.checkBoxReverseSteer.UseVisualStyleBackColor = true;
@@ -331,9 +358,10 @@
             // radioButtonSteerC
             // 
             this.radioButtonSteerC.AutoSize = true;
-            this.radioButtonSteerC.Location = new System.Drawing.Point(88, 19);
+            this.radioButtonSteerC.Location = new System.Drawing.Point(117, 23);
+            this.radioButtonSteerC.Margin = new System.Windows.Forms.Padding(4);
             this.radioButtonSteerC.Name = "radioButtonSteerC";
-            this.radioButtonSteerC.Size = new System.Drawing.Size(32, 17);
+            this.radioButtonSteerC.Size = new System.Drawing.Size(38, 21);
             this.radioButtonSteerC.TabIndex = 5;
             this.radioButtonSteerC.Text = "C";
             this.radioButtonSteerC.UseVisualStyleBackColor = true;
@@ -342,9 +370,10 @@
             // 
             this.radioButtonSteerB.AutoSize = true;
             this.radioButtonSteerB.Checked = true;
-            this.radioButtonSteerB.Location = new System.Drawing.Point(50, 19);
+            this.radioButtonSteerB.Location = new System.Drawing.Point(67, 23);
+            this.radioButtonSteerB.Margin = new System.Windows.Forms.Padding(4);
             this.radioButtonSteerB.Name = "radioButtonSteerB";
-            this.radioButtonSteerB.Size = new System.Drawing.Size(32, 17);
+            this.radioButtonSteerB.Size = new System.Drawing.Size(38, 21);
             this.radioButtonSteerB.TabIndex = 4;
             this.radioButtonSteerB.TabStop = true;
             this.radioButtonSteerB.Text = "B";
@@ -353,9 +382,10 @@
             // radioButtonSteerA
             // 
             this.radioButtonSteerA.AutoSize = true;
-            this.radioButtonSteerA.Location = new System.Drawing.Point(7, 19);
+            this.radioButtonSteerA.Location = new System.Drawing.Point(9, 23);
+            this.radioButtonSteerA.Margin = new System.Windows.Forms.Padding(4);
             this.radioButtonSteerA.Name = "radioButtonSteerA";
-            this.radioButtonSteerA.Size = new System.Drawing.Size(32, 17);
+            this.radioButtonSteerA.Size = new System.Drawing.Size(38, 21);
             this.radioButtonSteerA.TabIndex = 3;
             this.radioButtonSteerA.Text = "A";
             this.radioButtonSteerA.UseVisualStyleBackColor = true;
@@ -366,9 +396,11 @@
             this.groupBox1.Controls.Add(this.radioButtonDriveC);
             this.groupBox1.Controls.Add(this.radioButtonDriveB);
             this.groupBox1.Controls.Add(this.radioButtonDriveA);
-            this.groupBox1.Location = new System.Drawing.Point(9, 19);
+            this.groupBox1.Location = new System.Drawing.Point(12, 23);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(130, 68);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Size = new System.Drawing.Size(173, 84);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Drive Motor";
@@ -376,9 +408,10 @@
             // checkBoxReverseDrive
             // 
             this.checkBoxReverseDrive.AutoSize = true;
-            this.checkBoxReverseDrive.Location = new System.Drawing.Point(6, 45);
+            this.checkBoxReverseDrive.Location = new System.Drawing.Point(8, 55);
+            this.checkBoxReverseDrive.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxReverseDrive.Name = "checkBoxReverseDrive";
-            this.checkBoxReverseDrive.Size = new System.Drawing.Size(66, 17);
+            this.checkBoxReverseDrive.Size = new System.Drawing.Size(83, 21);
             this.checkBoxReverseDrive.TabIndex = 3;
             this.checkBoxReverseDrive.Text = "Reverse";
             this.checkBoxReverseDrive.UseVisualStyleBackColor = true;
@@ -386,9 +419,10 @@
             // radioButtonDriveC
             // 
             this.radioButtonDriveC.AutoSize = true;
-            this.radioButtonDriveC.Location = new System.Drawing.Point(87, 19);
+            this.radioButtonDriveC.Location = new System.Drawing.Point(116, 23);
+            this.radioButtonDriveC.Margin = new System.Windows.Forms.Padding(4);
             this.radioButtonDriveC.Name = "radioButtonDriveC";
-            this.radioButtonDriveC.Size = new System.Drawing.Size(32, 17);
+            this.radioButtonDriveC.Size = new System.Drawing.Size(38, 21);
             this.radioButtonDriveC.TabIndex = 2;
             this.radioButtonDriveC.Text = "C";
             this.radioButtonDriveC.UseVisualStyleBackColor = true;
@@ -396,9 +430,10 @@
             // radioButtonDriveB
             // 
             this.radioButtonDriveB.AutoSize = true;
-            this.radioButtonDriveB.Location = new System.Drawing.Point(49, 19);
+            this.radioButtonDriveB.Location = new System.Drawing.Point(65, 23);
+            this.radioButtonDriveB.Margin = new System.Windows.Forms.Padding(4);
             this.radioButtonDriveB.Name = "radioButtonDriveB";
-            this.radioButtonDriveB.Size = new System.Drawing.Size(32, 17);
+            this.radioButtonDriveB.Size = new System.Drawing.Size(38, 21);
             this.radioButtonDriveB.TabIndex = 1;
             this.radioButtonDriveB.Text = "B";
             this.radioButtonDriveB.UseVisualStyleBackColor = true;
@@ -407,9 +442,10 @@
             // 
             this.radioButtonDriveA.AutoSize = true;
             this.radioButtonDriveA.Checked = true;
-            this.radioButtonDriveA.Location = new System.Drawing.Point(6, 19);
+            this.radioButtonDriveA.Location = new System.Drawing.Point(8, 23);
+            this.radioButtonDriveA.Margin = new System.Windows.Forms.Padding(4);
             this.radioButtonDriveA.Name = "radioButtonDriveA";
-            this.radioButtonDriveA.Size = new System.Drawing.Size(32, 17);
+            this.radioButtonDriveA.Size = new System.Drawing.Size(38, 21);
             this.radioButtonDriveA.TabIndex = 0;
             this.radioButtonDriveA.TabStop = true;
             this.radioButtonDriveA.Text = "A";
@@ -424,18 +460,21 @@
             this.groupBoxDebug.Controls.Add(this.label4);
             this.groupBoxDebug.Controls.Add(this.buttonSendDebugCommand);
             this.groupBoxDebug.Controls.Add(this.textBoxDebug);
-            this.groupBoxDebug.Location = new System.Drawing.Point(392, 12);
+            this.groupBoxDebug.Location = new System.Drawing.Point(523, 15);
+            this.groupBoxDebug.Margin = new System.Windows.Forms.Padding(4);
             this.groupBoxDebug.Name = "groupBoxDebug";
-            this.groupBoxDebug.Size = new System.Drawing.Size(272, 200);
+            this.groupBoxDebug.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBoxDebug.Size = new System.Drawing.Size(363, 246);
             this.groupBoxDebug.TabIndex = 17;
             this.groupBoxDebug.TabStop = false;
             this.groupBoxDebug.Text = "Debug";
             // 
             // buttonDebugGetState
             // 
-            this.buttonDebugGetState.Location = new System.Drawing.Point(6, 171);
+            this.buttonDebugGetState.Location = new System.Drawing.Point(8, 210);
+            this.buttonDebugGetState.Margin = new System.Windows.Forms.Padding(4);
             this.buttonDebugGetState.Name = "buttonDebugGetState";
-            this.buttonDebugGetState.Size = new System.Drawing.Size(115, 23);
+            this.buttonDebugGetState.Size = new System.Drawing.Size(153, 28);
             this.buttonDebugGetState.TabIndex = 6;
             this.buttonDebugGetState.Text = "GetMotor0State";
             this.buttonDebugGetState.UseVisualStyleBackColor = true;
@@ -444,17 +483,19 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 92);
+            this.label5.Location = new System.Drawing.Point(8, 113);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(133, 13);
+            this.label5.Size = new System.Drawing.Size(177, 17);
             this.label5.TabIndex = 5;
             this.label5.Text = "Parse Bluetooth Response";
             // 
             // buttonDebugParse
             // 
-            this.buttonDebugParse.Location = new System.Drawing.Point(167, 134);
+            this.buttonDebugParse.Location = new System.Drawing.Point(223, 165);
+            this.buttonDebugParse.Margin = new System.Windows.Forms.Padding(4);
             this.buttonDebugParse.Name = "buttonDebugParse";
-            this.buttonDebugParse.Size = new System.Drawing.Size(99, 23);
+            this.buttonDebugParse.Size = new System.Drawing.Size(132, 28);
             this.buttonDebugParse.TabIndex = 4;
             this.buttonDebugParse.Text = "Parse";
             this.buttonDebugParse.UseVisualStyleBackColor = true;
@@ -462,25 +503,28 @@
             // 
             // textBoxDebugResponse
             // 
-            this.textBoxDebugResponse.Location = new System.Drawing.Point(6, 108);
+            this.textBoxDebugResponse.Location = new System.Drawing.Point(8, 133);
+            this.textBoxDebugResponse.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxDebugResponse.Name = "textBoxDebugResponse";
-            this.textBoxDebugResponse.Size = new System.Drawing.Size(260, 20);
+            this.textBoxDebugResponse.Size = new System.Drawing.Size(345, 22);
             this.textBoxDebugResponse.TabIndex = 3;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 16);
+            this.label4.Location = new System.Drawing.Point(8, 20);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(130, 13);
+            this.label4.Size = new System.Drawing.Size(172, 17);
             this.label4.TabIndex = 2;
             this.label4.Text = "Send Bluetooth Command";
             // 
             // buttonSendDebugCommand
             // 
-            this.buttonSendDebugCommand.Location = new System.Drawing.Point(167, 58);
+            this.buttonSendDebugCommand.Location = new System.Drawing.Point(223, 71);
+            this.buttonSendDebugCommand.Margin = new System.Windows.Forms.Padding(4);
             this.buttonSendDebugCommand.Name = "buttonSendDebugCommand";
-            this.buttonSendDebugCommand.Size = new System.Drawing.Size(99, 23);
+            this.buttonSendDebugCommand.Size = new System.Drawing.Size(132, 28);
             this.buttonSendDebugCommand.TabIndex = 1;
             this.buttonSendDebugCommand.Text = "Send Command";
             this.buttonSendDebugCommand.UseVisualStyleBackColor = true;
@@ -488,16 +532,17 @@
             // 
             // textBoxDebug
             // 
-            this.textBoxDebug.Location = new System.Drawing.Point(6, 32);
+            this.textBoxDebug.Location = new System.Drawing.Point(8, 39);
+            this.textBoxDebug.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxDebug.Name = "textBoxDebug";
-            this.textBoxDebug.Size = new System.Drawing.Size(260, 20);
+            this.textBoxDebug.Size = new System.Drawing.Size(345, 22);
             this.textBoxDebug.TabIndex = 0;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(676, 601);
+            this.ClientSize = new System.Drawing.Size(901, 740);
             this.Controls.Add(this.groupBoxDebug);
             this.Controls.Add(this.groupBoxSettings);
             this.Controls.Add(this.label3);
@@ -506,6 +551,7 @@
             this.Controls.Add(this.groupBoxInit);
             this.Controls.Add(this.textBoxLog);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "NXT Bluetooth";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);

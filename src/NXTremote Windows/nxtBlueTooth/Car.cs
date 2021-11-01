@@ -27,7 +27,7 @@ namespace NXTremote
         public Bluetooth BT { get; }
         public Motor DriveMotor { get; }
         public Motor SteerMotor { get; }
-        private int STEER_SPEED = 64; 
+        private int STEER_SPEED = 70; 
         private SetOutputState DriveOutput { get; }
         private SetOutputState SteerOutput { get; }
 
